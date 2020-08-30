@@ -11,6 +11,7 @@ You need to have PostgreSQL installed on the host machine
 The database and table name can be changed during the docker build process by using "--build-arg dbase="YOUR_DATABASE_NAME_HERE" --build-arg table="YOUR_TABLE_NAME_HERE""
 
 database**: bgp
+
 table**: api_hijacks
 
 The following credentials are set just for testing purposes. In production it will not be set this way.
@@ -18,6 +19,7 @@ The following credentials are set just for testing purposes. In production it wi
 The username and password can be changed during the docker build process by using "--build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE""
 
 user**: postgres
+
 password**: password
 
 
@@ -25,8 +27,9 @@ Make sure the user has been given permission to LOGIN and necessary privleges to
 
 #### Build the image
 
-
+```
 docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE" --build-arg dbase="YOUR_DATABASE_NAME_HERE --build-arg table="YOUR_TABLE_NAME_HERE" --tag="deploymentapi" .
+```
 ```
 
 Depending on how you set your docker install you may requie to use sudo for your docker commands
