@@ -25,6 +25,13 @@ password**: password
 
 Make sure the user has been given permission to LOGIN and necessary privleges to access the data for the hijacks table.
 
+#### Pull the image
+
+Pull the image from docker hub by running
+```
+docker pull ninjafro27/deployment_api:finished
+```
+
 #### Build the image
 
 ```
