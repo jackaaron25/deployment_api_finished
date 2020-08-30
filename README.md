@@ -29,7 +29,7 @@ Make sure the user has been given permission to LOGIN and necessary privleges to
 
 ```
 docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE" --build-arg dbase="YOUR_DATABASE_NAME_HERE --build-arg table="YOUR_TABLE_NAME_HERE" --tag="deploymentapi" .
-```
+
 ```
 
 Depending on how you set your docker install you may requie to use sudo for your docker commands
@@ -38,8 +38,9 @@ Depending on how you set your docker install you may requie to use sudo for your
 
 This will run in the forground 
 
-
+```
 docker run --network=host deploymentapi
+```
 ```
 
 This command binds port 8080 on your machine to port 8080 in the container, which is exposed by the Dockerfile. Most importantly it also connects the container's network to the host, so you're machine's localhost is also localhost in the docker conatiner.
