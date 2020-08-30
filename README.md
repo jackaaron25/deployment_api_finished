@@ -28,6 +28,7 @@ Make sure the user has been given permission to LOGIN and necessary privleges to
 #### Pull the image
 
 Pull the image from docker hub by running
+
 ```
 docker pull ninjafro27/deployment_api:finished
 ```
@@ -63,6 +64,6 @@ docker run --network=host -d -p 8080:8080 deploymentapi
 
 Depending on your machine you can either use curl or your browser. For exmaple with curl` you can try the following:
 
-
+```
 curl -X GET --header 'Accept: application/json' 'localhost:8080/deploy-api/api/ApiDeployment/get_hijacks'
 ```
