@@ -41,14 +41,14 @@ This will run in the forground
 ```
 docker run --network=host deploymentapi
 ```
-```
+
 
 This command binds port 8080 on your machine to port 8080 in the container, which is exposed by the Dockerfile. Most importantly it also connects the container's network to the host, so you're machine's localhost is also localhost in the docker conatiner.
 
 
 If you want it to run in the background just add the -d option
 
-
+```
 docker run --network=host -d -p 8080:8080 deploymentapi
 ```
 
