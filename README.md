@@ -25,15 +25,15 @@ password**: password
 
 Make sure the user has been given permission to LOGIN and necessary privleges to access the data for the hijacks table.
 
-#### Pull the image
+#### Pull and run from docker hub
 
-Pull the image from docker hub by running
+Pull and run the image (with default username, password, database, and table) from docker hub by running
 
 ```
-docker pull ninjafro27/deployment_api:finished
+docker run --network=host ninjafro27/deployment_api:finished
 ```
 
-#### Build the image
+#### Build the image after obtaining this git repository in your command line
 
 ```
 docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE" --build-arg dbase="YOUR_DATABASE_NAME_HERE --build-arg table="YOUR_TABLE_NAME_HERE" --tag="deploymentapi" .
@@ -42,7 +42,7 @@ docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASS
 
 Depending on how you set your docker install you may requie to use sudo for your docker commands
 
-#### How to run
+#### How to run after building
 
 This will run in the forground 
 
