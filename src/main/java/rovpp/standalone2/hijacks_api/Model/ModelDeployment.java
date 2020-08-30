@@ -13,36 +13,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ModelDeployment {
     private final int id;
     private final String country;
-    private final Long[] detected_as_path;
-    private final int detected_by_bgpmon_peers;
+    private final Long[] as_path;
+    private final String prefix;
     private final String detected_origin_name;
     private final int detected_origin_number;
-    private final String start_time;
-    private final String end_time;
-    private final int event_number;
+    private final String time_detected;
+    private final String last_time_checked;
+    private final String blacklist_source;
+    private final String whitelisted_cdn;
+    private final String roa_validity;
     private final String event_type;
     private final String expected_origin_name;
     private final int expected_origin_number;
     private final String expected_prefix;
     private final String more_specific_prefix;
-    private final String urlHelp;
-    public ModelDeployment(@JsonProperty("id") int id, @JsonProperty("country") String country, @JsonProperty("detected_as_path") Long[] detected_as_path, @JsonProperty("detected_by_bgpmon_peers") int detected_by_bgpmon_peers, @JsonProperty("detected_origin_name") String detected_origin_name, @JsonProperty("detected_origin_number") int detected_origin_number, @JsonProperty("start_time") String start_time, @JsonProperty("end_time") String end_time, @JsonProperty("event_number") int event_number, @JsonProperty("event_type") String event_type, @JsonProperty("expected_origin_name") String expected_origin_name, @JsonProperty("expected_origin_number") int expected_origin_number, @JsonProperty("expected_prefix") String expected_prefix, @JsonProperty("more_specific_prefix") String more_specific_prefix, @JsonProperty("url") String urlHelp){
+    private final boolean non_routed;    
+    public ModelDeployment(@JsonProperty("id") int id, @JsonProperty("country") String country, @JsonProperty("as_path") Long[] as_path, @JsonProperty("prefix") String prefix, @JsonProperty("detected_origin_name") String detected_origin_name, @JsonProperty("detected_origin_number") int detected_origin_number, @JsonProperty("time_detected") String time_detected, @JsonProperty("last_time_checked") String last_time_checked, @JsonProperty("blacklist_source") String blacklist_source, @JsonProperty("whitelisted_cdn") String whitelisted_cdn, @JsonProperty("roa_validity") String roa_validity, @JsonProperty("event_type") String event_type, @JsonProperty("expected_origin_name") String expected_origin_name, @JsonProperty("expected_origin_number") int expected_origin_number, @JsonProperty("expected_prefix") String expected_prefix, @JsonProperty("more_specific_prefix") String more_specific_prefix, @JsonProperty("non_routed") boolean non_routed){
         this.id = id;
         this.country = country;
-        this.detected_as_path = detected_as_path;
-        this.detected_by_bgpmon_peers = detected_by_bgpmon_peers;
+        this.as_path = as_path;
+	this.prefix = prefix;
         this.detected_origin_name = detected_origin_name;
         this.detected_origin_number = detected_origin_number;
-        this.start_time = start_time;
-        this.end_time = end_time;
-        this.event_number = event_number;
+        this.time_detected = time_detected;
+        this.last_time_checked = last_time_checked;
+        this.blacklist_source = blacklist_source;
+	this.whitelisted_cdn = whitelisted_cdn;
+	this.roa_validity = roa_validity;
         this.event_type = event_type;
         this.expected_origin_name = expected_origin_name;
         this.expected_origin_number = expected_origin_number;
         this.expected_prefix = expected_prefix;
         this.more_specific_prefix = more_specific_prefix;
-        this.urlHelp = urlHelp;
-
+	this.non_routed = non_routed;
     }
     public int getId(){
         return id;
@@ -50,11 +53,17 @@ public class ModelDeployment {
     public String getCountry(){
         return country;
     }
-    public Long[] getDap(){
-        return detected_as_path;
+    public Long[] getAp(){
+        return as_path;
     }
-    public int getDbbp(){
-        return detected_by_bgpmon_peers;
+    public String getBs(){
+        return blacklist_source;
+    }
+    public String getWlcdn(){
+        return whitelisted_cdn;
+    }
+    public String getRoav(){
+        return roa_validity;
     }
     public String getDona(){
         return detected_origin_name;
@@ -63,13 +72,10 @@ public class ModelDeployment {
         return detected_origin_number;
     }
     public String getStart(){
-        return start_time;
+        return time_detected;
     }
     public String getEnd(){
-        return end_time;
-    }
-    public int getEn(){
-        return event_number;
+        return last_time_checked;
     }
     public String getEt(){
         return event_type;
@@ -86,8 +92,8 @@ public class ModelDeployment {
     public String getMsp(){
             return more_specific_prefix;
     }
-    public String getUrl(){
-            return urlHelp;
+    public boolean getNr(){
+	    return non_routed;	
     }
 
 }

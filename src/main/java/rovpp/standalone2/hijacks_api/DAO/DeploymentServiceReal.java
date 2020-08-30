@@ -25,49 +25,57 @@ public class DeploymentServiceReal implements DeploymentDao{
         Connection c = null;
       Statement stmt = null;
       try {
+	String username = System.getenv("usname");
+	String password = System.getenv("psword");
+	String database = System.getenv("dabase");
+	String table = System.getenv("tble");
         Class.forName("org.postgresql.Driver");
         c = DriverManager
-           .getConnection("jdbc:postgresql://localhost:5432/bgp",
-           "postgres", "password");
+           .getConnection("jdbc:postgresql://localhost:5432/" + database,
+           username, password);
         c.setAutoCommit(false);
         
 
         stmt = c.createStatement();
-        ResultSet rs = stmt.executeQuery( "SELECT * FROM hijacks;" );
+        ResultSet rs = stmt.executeQuery( "SELECT * FROM " + table + ";");
         int id;
         String country;
-        Array detected_as_path_array;
-        int detected_by_bgpmon_peers;
+        Array as_path_array;
+        String prefix;
         String detected_origin_name;
         int detected_origin_number;
-        String start_time;
-        String end_time;
-        int event_number;
+        String time_detected;
+        String last_time_checked;
+        String blacklist_source;
+	String whitelisted_cdn;
+	String roa_validity;
         String event_type;
         String expected_origin_name;
         int expected_origin_number;
         String expected_prefix;
         String more_specific_prefix;
-        String url;
+	boolean non_routed;
         List<ModelDeployment> mlist = new ArrayList<>();
         while ( rs.next() ) {
            id = rs.getInt("id");
            country = rs.getString("country");
-           detected_as_path_array  = rs.getArray("detected_as_path");
-           Long[] detected_as_path = (Long[])detected_as_path_array.getArray();
-           detected_by_bgpmon_peers = rs.getInt("detected_by_bgpmon_peers");
+           as_path_array  = rs.getArray("as_path");
+           Long[] as_path = (Long[])as_path_array.getArray();
+           prefix = rs.getString("prefix");
            detected_origin_name = rs.getString("detected_origin_name");
            detected_origin_number = rs.getInt("detected_origin_number");
-           start_time = rs.getString("start_time");
-           end_time = rs.getString("end_time");
-           event_number = rs.getInt("event_number");
+           time_detected = rs.getString("time_detected");
+           last_time_checked = rs.getString("last_time_checked");
+           blacklist_source = rs.getString("blacklist_source");
+	   whitelisted_cdn = rs.getString("whitelisted_cdn");
+	   roa_validity = rs.getString("roa_validity");
            event_type = rs.getString("event_type");
            expected_origin_name = rs.getString("expected_origin_name");
            expected_origin_number = rs.getInt("expected_origin_number");
            expected_prefix = rs.getString("expected_prefix");
            more_specific_prefix = rs.getString("more_specific_prefix");
-           url = rs.getString("url");
-           ModelDeployment curModel = new ModelDeployment(id, country, detected_as_path, detected_by_bgpmon_peers, detected_origin_name, detected_origin_number, start_time, end_time, event_number, event_type, expected_origin_name, expected_origin_number, expected_prefix, more_specific_prefix, url);
+	   non_routed = rs.getBoolean("non_routed");
+           ModelDeployment curModel = new ModelDeployment(id, country, as_path, prefix, detected_origin_name, detected_origin_number, time_detected, last_time_checked, blacklist_source, whitelisted_cdn, roa_validity, event_type, expected_origin_name, expected_origin_number, expected_prefix, more_specific_prefix, non_routed);
             mlist.add(curModel);
         }
         rs.close();
@@ -88,49 +96,57 @@ public class DeploymentServiceReal implements DeploymentDao{
         Connection c = null;
         Statement stmt = null;
         try {
-          Class.forName("org.postgresql.Driver");
-          c = DriverManager
-             .getConnection("jdbc:postgresql://localhost:5432/bgp",
-             "postgres", "password");
-          c.setAutoCommit(false);
-          
-  
-          stmt = c.createStatement();
-          ResultSet rs = stmt.executeQuery( "SELECT * FROM deployment;" );
+          String username = System.getenv("usname");
+        String password = System.getenv("psword");
+        String database = System.getenv("dabase");
+        String table = System.getenv("tble");
+        Class.forName("org.postgresql.Driver");
+        c = DriverManager
+           .getConnection("jdbc:postgresql://localhost:5432/" + database,
+           username, password);
+        c.setAutoCommit(false);
+
+
+        stmt = c.createStatement();
+        ResultSet rs = stmt.executeQuery( "SELECT * FROM " + table + ";");
           int id;
           String country;
-          Array detected_as_path_array;
-          int detected_by_bgpmon_peers;
+          Array as_path_array;
+          String prefix;
           String detected_origin_name;
           int detected_origin_number;
-          String start_time;
-          String end_time;
-          int event_number;
+          String time_detected;
+          String last_time_checked;
+          String blacklist_source;
+	  String whitelisted_cdn;
+	  String roa_validity;
           String event_type;
           String expected_origin_name;
           int expected_origin_number;
           String expected_prefix;
           String more_specific_prefix;
-          String url;
+	  boolean non_routed;
           List<ModelDeployment> mlist = new ArrayList<>();
           while ( rs.next() ) {
              id = rs.getInt("id");
              country = rs.getString("country");
-             detected_as_path_array  = rs.getArray("detected_as_path");
-           Long[] detected_as_path = (Long[])detected_as_path_array.getArray();
-             detected_by_bgpmon_peers = rs.getInt("detected_by_bgpmon_peers");
+             as_path_array  = rs.getArray("as_path");
+             Long[] as_path = (Long[])as_path_array.getArray();
+             prefix = rs.getString("prefix");
              detected_origin_name = rs.getString("detected_origin_name");
              detected_origin_number = rs.getInt("detected_origin_number");
-             start_time = rs.getString("start_time");
-             end_time = rs.getString("end_time");
-             event_number = rs.getInt("event_number");
+             time_detected = rs.getString("time_detected");
+             last_time_checked = rs.getString("last_time_checked");
+             blacklist_source = rs.getString("blacklist_source");
+	     whitelisted_cdn = rs.getString("whitelisted_cdn");
+	     roa_validity = rs.getString("roa_validity");
              event_type = rs.getString("event_type");
              expected_origin_name = rs.getString("expected_origin_name");
              expected_origin_number = rs.getInt("expected_origin_number");
              expected_prefix = rs.getString("expected_prefix");
              more_specific_prefix = rs.getString("more_specific_prefix");
-             url = rs.getString("url");
-             ModelDeployment curModel = new ModelDeployment(id, country, detected_as_path, detected_by_bgpmon_peers, detected_origin_name, detected_origin_number, start_time, end_time, event_number, event_type, expected_origin_name, expected_origin_number, expected_prefix, more_specific_prefix, url);
+	     non_routed = rs.getBoolean("non_routed");
+             ModelDeployment curModel = new ModelDeployment(id, country, as_path, prefix, detected_origin_name, detected_origin_number, time_detected, last_time_checked, blacklist_source, whitelisted_cdn, roa_validity, event_type, expected_origin_name, expected_origin_number, expected_prefix, more_specific_prefix, non_routed);
               mlist.add(curModel);
           }
           rs.close();
@@ -145,7 +161,7 @@ public class DeploymentServiceReal implements DeploymentDao{
               ModelDeployment curModel = mlist.get(i);
               String endtime = curModel.getEnd();
               
-              if (endtime != null){
+              if (endtime == null){
                     
                     listOfDates.add(curModel.getStart().substring(0,10));
                     

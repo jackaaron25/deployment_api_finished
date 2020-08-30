@@ -1,4 +1,12 @@
 FROM ubuntu
+ARG uname="api"
+ARG pword="BGP/-\\PIuser2020"
+ARG dbase="bgp"
+ARG table="api_hijacks"
+ENV usname=$uname
+ENV psword=$pword
+ENV dabase=$dbase
+ENV tble=$table
 RUN apt-get update
 RUN apt-get -y install openjdk-8-jdk
 RUN apt-get -y install wget
@@ -24,4 +32,5 @@ COPY . .
 RUN mvn clean install
 EXPOSE 8080
 EXPOSE 5432
-CMD ["java", "-jar", "target/deploy-api.war"]
+RUN cp target/deploy-api.war /opt/tomcat/webapps
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
