@@ -21,7 +21,7 @@ public class DeploymentService {
     public List<ModelDeployment> getHijacks(){
         return deploymentDao.getHijacks();
     }
-    public ModelActive activeHijacksSummary(){
-        return deploymentDao.activeHijacksSummary();
+    public ModelActive hijackTimeSummary(){
+        return deploymentDao.hijackTimeSummary();
     }
 }

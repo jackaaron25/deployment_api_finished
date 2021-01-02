@@ -13,5 +13,5 @@ public interface DeploymentDao {
 
 
     public List<ModelDeployment> getHijacks();
-    public ModelActive activeHijacksSummary();
+    public ModelActive hijackTimeSummary();
 }

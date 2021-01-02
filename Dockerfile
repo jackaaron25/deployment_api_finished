@@ -21,9 +21,9 @@ ENV MAVEN_HOME=/opt/maven
 ENV PATH=${M2_HOME}/bin:${PATH}
 RUN groupadd tomcat
 RUN useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
-RUN wget http://www.trieuvan.com/apache/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57.tar.gz 
-RUN tar -xzvf apache-tomcat-8.5.57.tar.gz
-RUN mv apache-tomcat-8.5.57/ /opt/tomcat/
+RUN wget apache.claz.org/tomcat/tomcat-8/v8.5.61/bin/apache-tomcat-8.5.61.tar.gz 
+RUN tar -xzvf apache-tomcat-8.5.61.tar.gz
+RUN mv apache-tomcat-8.5.61/ /opt/tomcat/
 RUN chown -R tomcat:tomcat /opt/tomcat/
 RUN chmod +x /opt/tomcat/bin/*
 ENV CATALINA_HOME=/opt/tomcat

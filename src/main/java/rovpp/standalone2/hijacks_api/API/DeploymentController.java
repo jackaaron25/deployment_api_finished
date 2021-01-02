@@ -25,8 +25,8 @@ public class DeploymentController {
     public List<ModelDeployment> getHijacks(){
         return deploymentService.getHijacks();
     }
-    @GetMapping(path = "/active_hijacks_summary")
-    public ModelActive activeHijacksSummary(){
-        return deploymentService.activeHijacksSummary();
+    @GetMapping(path = "/hijack_time_summary")
+    public ModelActive hijackTimeSummary(){
+        return deploymentService.hijackTimeSummary();
     }
 }
