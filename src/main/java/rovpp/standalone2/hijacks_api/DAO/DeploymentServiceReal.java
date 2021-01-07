@@ -60,7 +60,7 @@ public class DeploymentServiceReal implements DeploymentDao{
         while ( rs.next() ) {
            id = rs.getInt("id");
            country = rs.getString("country");
-           as_path_array  = rs.getArray("as_path");
+           as_path_array  = rs.getArray("detected_as_path");
            Long[] as_path = (Long[])as_path_array.getArray();
            //prefix = rs.getString("prefix");
            detected_origin_name = rs.getString("detected_origin_name");
@@ -131,7 +131,7 @@ public class DeploymentServiceReal implements DeploymentDao{
           while ( rs.next() ) {
              id = rs.getInt("id");
              country = rs.getString("country");
-             as_path_array  = rs.getArray("as_path");
+             as_path_array  = rs.getArray("detected_as_path");
              Long[] as_path = (Long[])as_path_array.getArray();
              //prefix = rs.getString("prefix");
              detected_origin_name = rs.getString("detected_origin_name");

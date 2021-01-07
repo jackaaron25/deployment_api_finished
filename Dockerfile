@@ -2,7 +2,7 @@ FROM ubuntu
 ARG uname="api"
 ARG pword="BGP/-\\PIuser2020"
 ARG dbase="bgp"
-ARG table="api_hijacks"
+ARG table="hijacks"
 ENV usname=$uname
 ENV psword=$pword
 ENV dabase=$dbase
