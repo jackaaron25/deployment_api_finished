@@ -3,14 +3,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.*;
 
 public class ModelActive {
-    private final List<Date> dates;
+    private final List<String> dates;
     private final List<Integer> counts;
-    public ModelActive(@JsonProperty("dates") List<Date> dates, @JsonProperty("counts") List<Integer> counts){
+    public ModelActive(@JsonProperty("dates") List<String> dates, @JsonProperty("counts") List<Integer> counts){
         this.dates = dates;
         this.counts = counts; 
 
     }
-    public List<Date> getDates(){
+    public List<String> getDates(){
         return dates;
     }
     public List<Integer> getCounts(){

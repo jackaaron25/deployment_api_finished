@@ -13,7 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Array;
-import java.text.*;
+//import java.text.*;
 @Repository
 public class DeploymentServiceReal implements DeploymentDao{
     //private final JdbcTemplate jdbcTemplate;
@@ -157,7 +157,7 @@ public class DeploymentServiceReal implements DeploymentDao{
           List<String> listOfDates = new ArrayList<>();
           List<Integer> listOfCounts = new ArrayList<>();
           Set<String>indivDates = new HashSet<String>();
-          List<Date> dateList = new ArrayList<>();
+          //List<Date> dateList = new ArrayList<>();
           for (int i = 0; i < mlist.size(); i++){
               ModelDeployment curModel = mlist.get(i);
               String endtime = curModel.getEnd();
@@ -185,17 +185,18 @@ public class DeploymentServiceReal implements DeploymentDao{
         //while (itr.hasNext()){
             //listOfDates.add(itr.next());
         //}
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSZ");
-        for (int j = 0; j < (int)listOfDates.size(); j++){
-            String curString = listOfDates.get(j);
-            Date curDate = df.parse(curString);
-            dateList.add(curDate);
-        }
+        //DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //for (int j = 0; j < (int)listOfDates.size(); j++){
+            //String curString = listOfDates.get(j);
+            
+            //Date curDate = df.parse(curString);
+            //dateList.add(curDate);
+        //}
         for (int j = 0; j < hm.size(); j++){
             listOfCounts.add(hm.get(listOfDates.get(j)));
         }
         
-        return new ModelActive(dateList, listOfCounts);
+        return new ModelActive(listOfDates, listOfCounts);
        } catch ( Exception e ) {
            
           System.err.println( e.getClass().getName()+": "+ e.getMessage() );
