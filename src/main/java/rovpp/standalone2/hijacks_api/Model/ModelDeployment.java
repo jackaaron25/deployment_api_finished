@@ -17,7 +17,7 @@ public class ModelDeployment {
     //private final String prefix;
     private final String detected_origin_name;
     private final int detected_origin_number;
-    private final String time_detected;
+    //private final String time_detected;
     private final String time_seen;
     //private final String blacklist_source;
     //private final String whitelisted_cdn;
@@ -28,14 +28,14 @@ public class ModelDeployment {
     private final String expected_prefix;
     private final String detected_prefix;
     //private final boolean non_routed;    
-    public ModelDeployment(@JsonProperty("id") int id, @JsonProperty("country") String country, @JsonProperty("as_path") Long[] as_path, @JsonProperty("detected_origin_name") String detected_origin_name, @JsonProperty("detected_origin_number") int detected_origin_number, @JsonProperty("time_detected") String time_detected, @JsonProperty("time_seen") String time_seen, @JsonProperty("roa_validity") String roa_validity, @JsonProperty("expected_origin_name") String expected_origin_name, @JsonProperty("expected_origin_number") int expected_origin_number, @JsonProperty("expected_prefix") String expected_prefix, @JsonProperty("detected_prefix") String detected_prefix){
+    public ModelDeployment(@JsonProperty("id") int id, @JsonProperty("country") String country, @JsonProperty("as_path") Long[] as_path, @JsonProperty("detected_origin_name") String detected_origin_name, @JsonProperty("detected_origin_number") int detected_origin_number, @JsonProperty("time_seen") String time_seen, @JsonProperty("roa_validity") String roa_validity, @JsonProperty("expected_origin_name") String expected_origin_name, @JsonProperty("expected_origin_number") int expected_origin_number, @JsonProperty("expected_prefix") String expected_prefix, @JsonProperty("detected_prefix") String detected_prefix){
         this.id = id;
         this.country = country;
         this.as_path = as_path;
 	//this.prefix = prefix;
         this.detected_origin_name = detected_origin_name;
         this.detected_origin_number = detected_origin_number;
-        this.time_detected = time_detected;
+       // this.time_detected = time_detected;
         this.time_seen = time_seen;
     //    this.blacklist_source = blacklist_source;
 	//this.whitelisted_cdn = whitelisted_cdn;
@@ -71,9 +71,9 @@ public class ModelDeployment {
     public int getDonu(){
         return detected_origin_number;
     }
-    public String getStart(){
-        return time_detected;
-    }
+    //public String getStart(){
+      //  return time_detected;
+    //}
     public String getEnd(){
         return time_seen;
     }

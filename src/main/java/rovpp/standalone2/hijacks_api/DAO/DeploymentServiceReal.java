@@ -45,7 +45,7 @@ public class DeploymentServiceReal implements DeploymentDao{
         //String prefix;
         String detected_origin_name;
         int detected_origin_number;
-        String time_detected;
+        //String time_detected;
         String time_seen;
         //String blacklist_source;
 	//String whitelisted_cdn;
@@ -65,7 +65,7 @@ public class DeploymentServiceReal implements DeploymentDao{
            //prefix = rs.getString("prefix");
            detected_origin_name = rs.getString("detected_origin_name");
            detected_origin_number = rs.getInt("detected_origin_number");
-           time_detected = rs.getString("time_detected");
+           //time_detected = rs.getString("time_detected");
            time_seen = rs.getString("time_seen");
            //blacklist_source = rs.getString("blacklist_source");
 	   //whitelisted_cdn = rs.getString("whitelisted_cdn");
@@ -76,7 +76,7 @@ public class DeploymentServiceReal implements DeploymentDao{
            expected_prefix = rs.getString("expected_prefix");
            detected_prefix = rs.getString("detected_prefix");
 	   //non_routed = rs.getBoolean("non_routed");
-           ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_detected, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
+           ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
             mlist.add(curModel);
         }
         rs.close();
@@ -116,7 +116,7 @@ public class DeploymentServiceReal implements DeploymentDao{
           //String prefix;
           String detected_origin_name;
           int detected_origin_number;
-          String time_detected;
+          //String time_detected;
           String time_seen;
           //String blacklist_source;
 	  //String whitelisted_cdn;
@@ -136,7 +136,7 @@ public class DeploymentServiceReal implements DeploymentDao{
              //prefix = rs.getString("prefix");
              detected_origin_name = rs.getString("detected_origin_name");
              detected_origin_number = rs.getInt("detected_origin_number");
-             time_detected = rs.getString("time_detected");
+             //time_detected = rs.getString("time_detected");
              time_seen = rs.getString("time_seen");
              //blacklist_source = rs.getString("blacklist_source");
 	     //whitelisted_cdn = rs.getString("whitelisted_cdn");
@@ -147,7 +147,7 @@ public class DeploymentServiceReal implements DeploymentDao{
              expected_prefix = rs.getString("expected_prefix");
              detected_prefix = rs.getString("detected_prefix");
 	     //non_routed = rs.getBoolean("non_routed");
-             ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_detected, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
+             ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
               mlist.add(curModel);
           }
           rs.close();
@@ -164,7 +164,7 @@ public class DeploymentServiceReal implements DeploymentDao{
               
               
                     
-                    listOfDates.add(curModel.getStart().substring(0,10));
+                    listOfDates.add(curModel.getEnd().substring(0,10));
                     
               
           }
