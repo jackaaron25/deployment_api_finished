@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.sql.Array;
 //import java.text.*;
 @Repository
@@ -67,6 +69,13 @@ public class DeploymentServiceReal implements DeploymentDao{
            detected_origin_number = rs.getInt("detected_origin_number");
            //time_detected = rs.getString("time_detected");
            time_seen = rs.getString("time_seen");
+           DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXX");
+        //for (int j = 0; j < (int)listOfDates.size(); j++){
+            //String curString = listOfDates.get(j);
+            
+            Date curDate = df.parse(time_seen);
+            //dateList.add(curDate);
+        //}
            //blacklist_source = rs.getString("blacklist_source");
 	   //whitelisted_cdn = rs.getString("whitelisted_cdn");
 	   roa_validity = rs.getString("roa_validity");
@@ -76,7 +85,7 @@ public class DeploymentServiceReal implements DeploymentDao{
            expected_prefix = rs.getString("expected_prefix");
            detected_prefix = rs.getString("detected_prefix");
 	   //non_routed = rs.getBoolean("non_routed");
-           ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
+           ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, curDate, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
             mlist.add(curModel);
         }
         rs.close();
@@ -138,6 +147,12 @@ public class DeploymentServiceReal implements DeploymentDao{
              detected_origin_number = rs.getInt("detected_origin_number");
              //time_detected = rs.getString("time_detected");
              time_seen = rs.getString("time_seen");
+             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXX");
+        //for (int j = 0; j < (int)listOfDates.size(); j++){
+            //String curString = listOfDates.get(j);
+            
+            Date curDate = df.parse(time_seen);
+            
              //blacklist_source = rs.getString("blacklist_source");
 	     //whitelisted_cdn = rs.getString("whitelisted_cdn");
 	     roa_validity = rs.getString("roa_validity");
@@ -147,7 +162,7 @@ public class DeploymentServiceReal implements DeploymentDao{
              expected_prefix = rs.getString("expected_prefix");
              detected_prefix = rs.getString("detected_prefix");
 	     //non_routed = rs.getBoolean("non_routed");
-             ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, time_seen, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
+             ModelDeployment curModel = new ModelDeployment(id, country, as_path, detected_origin_name, detected_origin_number, curDate, roa_validity, expected_origin_name, expected_origin_number, expected_prefix, detected_prefix);
               mlist.add(curModel);
           }
           rs.close();
@@ -158,13 +173,14 @@ public class DeploymentServiceReal implements DeploymentDao{
           List<Integer> listOfCounts = new ArrayList<>();
           Set<String>indivDates = new HashSet<String>();
           //List<Date> dateList = new ArrayList<>();
+          DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
           for (int i = 0; i < mlist.size(); i++){
               ModelDeployment curModel = mlist.get(i);
-              String endtime = curModel.getEnd();
+              
               
               
                     
-                    listOfDates.add(curModel.getEnd().substring(0,10));
+                    listOfDates.add(dateFormat.format(curModel.getEnd()));
                     
               
           }
