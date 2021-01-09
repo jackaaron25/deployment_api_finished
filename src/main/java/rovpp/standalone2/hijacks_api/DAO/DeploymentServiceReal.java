@@ -69,7 +69,7 @@ public class DeploymentServiceReal implements DeploymentDao{
            detected_origin_number = rs.getInt("detected_origin_number");
            //time_detected = rs.getString("time_detected");
            time_seen = rs.getString("time_seen");
-           DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXX");
+           DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssX");
         //for (int j = 0; j < (int)listOfDates.size(); j++){
             //String curString = listOfDates.get(j);
             
@@ -147,7 +147,7 @@ public class DeploymentServiceReal implements DeploymentDao{
              detected_origin_number = rs.getInt("detected_origin_number");
              //time_detected = rs.getString("time_detected");
              time_seen = rs.getString("time_seen");
-             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssXX");
+             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ssX");
         //for (int j = 0; j < (int)listOfDates.size(); j++){
             //String curString = listOfDates.get(j);
             
