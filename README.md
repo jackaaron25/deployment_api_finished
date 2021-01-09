@@ -29,13 +29,13 @@ Make sure the user has been given permission to LOGIN and necessary privleges to
 Pull and run the image (with default username, password, database, and table) from docker hub by running
 
 ```
-docker run --network=host ninjafro27/deployment_api:finished
+docker run --network=host ninjafro27/finalized:completed
 ```
 
 #### Build the image after obtaining this git repository in your command line
 
 ```
-docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE" --build-arg dbase="YOUR_DATABASE_NAME_HERE --build-arg table="YOUR_TABLE_NAME_HERE" --tag="deploymentapi" .
+docker build --build-arg uname="YOUR_USERNAME_HERE" --build-arg pword="YOUR_PASSWORD_HERE" --build-arg dbase="YOUR_DATABASE_NAME_HERE --build-arg table="YOUR_TABLE_NAME_HERE" --tag="finalized" .
 
 ```
 
@@ -46,7 +46,7 @@ Depending on how you set your docker install you may requie to use sudo for your
 This will run in the forground 
 
 ```
-docker run --network=host deploymentapi
+docker run --network=host finalized
 ```
 
 
@@ -56,7 +56,7 @@ This command binds port 8080 on your machine to port 8080 in the container, whic
 If you want it to run in the background just add the -d option
 
 ```
-docker run --network=host -d -p 8080:8080 deploymentapi
+docker run --network=host -d -p 8080:8080 finalized
 ```
 
 #### Test the API endpoints
